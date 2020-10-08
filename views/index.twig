@@ -1,0 +1,23 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="box">
+        <h1><a href="/">{{title}}</a></h1>
+         {% include "uploadForm.twig" with {'nodes': nodes} %}
+    </div>
+
+    <div class="box">
+        <p>Recently uploaded files</p>
+        <ul class="file-list">
+          {% for file in fileList %}
+                    <li><a href="{{host}}/file/{{ file|e }}">{{ file|e }}</a></li>
+          {% endfor %}
+
+        </ul>
+    </div>
+    <div class="box">
+                {% include "tree.twig" with {'nodes': nodes} %}
+    </div>
+</div>
+{% endblock %}

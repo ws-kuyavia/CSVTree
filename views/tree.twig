@@ -1,0 +1,37 @@
+{% block body %}
+    <div id="accordion-0">
+
+        {% for node in nodes %}
+
+            <div class="card">
+
+                {% if node.children %}
+                    <div class="card-header" id="heading-{{ node.id }}">
+                        <div class="mb-0">
+                            <a role="button" data-toggle="collapse" href="#collapse-{{ node.id }}" aria-expanded="true"
+                               aria-controls="collapse-{{ node.id }}">
+                                {{ node.value }}
+                            </a>
+                        </div>
+                    </div>
+                    <div id="collapse-{{ node.id }}" class="collapse" data-parent="#accordion-{{ node.parent }}"
+                         aria-labelledby="heading-{{ node.id }}" style="">
+                        <div class="card-body">
+                            <div id="accordion-{{ node.id }}">
+                                {% include "tree.twig" with {'nodes': node.children} %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="card-header">
+                        <a role="button" disabled="disabled" href="#">
+                            {{ node.value }}
+                        </a>
+                    </div>
+
+                {% endif %}
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

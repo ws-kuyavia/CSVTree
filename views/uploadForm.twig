@@ -1,0 +1,12 @@
+<form ref='uploadForm'
+           id='uploadForm'
+           action='{{formAction}}'
+           method='post'
+           encType="multipart/form-data">
+  <div class="form-group">
+    <label for="inputFile" default="Input a valid csv file">Input a valid csv file</label>
+    <input name="sampleFile" type="file" class=".form-control-file" id="inputFile" aria-describedby="fileUploadHelp" placeholder="your_file.csv">
+    <small id="fileUploadHelp" class="form-text text-muted">Upload you csv file or pick one from the select below</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
